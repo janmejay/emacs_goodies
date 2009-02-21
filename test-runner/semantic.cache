@@ -1,0 +1,16 @@
+;; Object test-runner/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "test-runner/"
+  :tables (list 
+   (semanticdb-table "testunit-runner.el"
+    :major-mode 'emacs-lisp-mode
+    :tags '(("test-runner-base" include nil nil [1 28]) ("ruby-executable" variable (:default-value "/usr/bin/ruby") nil [30 70]) ("test-case-testunit-make-run-command" function (:arguments ("buffer")) nil [72 225]) ("test-case-is-testunit" function (:arguments ("buffer")) nil [227 461]) ("test-case-register-type" code nil nil [463 586]) ("testunit-runner" package nil nil [588 614]))
+    :file "testunit-runner.el"
+    :pointmax 615
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )
