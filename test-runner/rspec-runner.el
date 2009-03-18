@@ -7,7 +7,7 @@
   (concat rspec-executable (build-rspec-command-options) file-name))
 
 (defun build-rspec-command-options ()
-  (if run-rspec-block (concat rspec-default-options " -l " (number-to-string (line-number-at-pos))) rspec-default-options))
+  (if run-rspec-block (concat rspec-default-options " -l " (number-to-string (line-number-at-pos)) " ") rspec-default-options))
 
 (setq run-rspec-block nil)
 
