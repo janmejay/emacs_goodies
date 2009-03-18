@@ -1,17 +1,19 @@
 (require 'test-runner-base)
 
-(setq rspec-executable "spec -f n")
+(setq rspec-executable "spec")
 
 (defun build-rspec-runner-command-for (file-name)
-  (cond ((numberp block-selection-for-rspec-buffer) (concat rspec-executable " -l " (number-to-string block-selection-for-rspec-buffer) " " file-name))
-        (t (concat rspec-executable " " file-name))))
+  (concat rspec-executable file-name))
 
-(setq block-selection-for-rspec-buffer nil)
+(defun build-rspec-command-options ()
+  (let ((options " -f n "))
+    (if run-rspec-block (concat options " -l " (number-to-string (line-number-at-pos))) options)))
 
-(defun toggle-spec-block-identification-for-selective-running ()
+(setq run-rspec-block nil)
+
+(defun toggle-run-current-rspec-block ()
   (interactive)
-  (cond ((numberp block-selection-for-rspec-buffer) (setq block-selection-for-rspec-buffer nil))
-        (t (setq block-selection-for-rspec-buffer (line-number-at-pos)))))
+  (setq run-rspec-block (not run-rspec-block)))
 
 (defun test-case-rspec-make-run-command (buffer)
   (fset 'builder-for-rspec-runner-command 'build-rspec-runner-command-for)
