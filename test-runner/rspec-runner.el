@@ -3,7 +3,7 @@
 (setq rspec-executable "spec")
 
 (defun build-rspec-runner-command-for (file-name)
-  (concat rspec-executable file-name))
+  (concat rspec-executable (build-rspec-command-options) file-name))
 
 (defun build-rspec-command-options ()
   (let ((options " -f n "))
