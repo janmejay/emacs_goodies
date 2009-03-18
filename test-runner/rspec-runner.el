@@ -3,7 +3,7 @@
 (setq rspec-executable "spec -f n")
 
 (defun build-rspec-runner-command-for (file-name)
-  (cond ((numberp block-selection-for-rspec-buffer) (concat rspec-executable " -l " block-selection-for-rspec-buffer " " file-name))
+  (cond ((numberp block-selection-for-rspec-buffer) (concat rspec-executable " -l " (number-to-string block-selection-for-rspec-buffer) " " file-name))
         (t (concat rspec-executable " " file-name))))
 
 (setq block-selection-for-rspec-buffer nil)
