@@ -1,13 +1,13 @@
 (require 'test-runner-base)
 
 (setq rspec-executable "spec")
+(setq rspec-default-options " -f n ")
 
 (defun build-rspec-runner-command-for (file-name)
   (concat rspec-executable (build-rspec-command-options) file-name))
 
 (defun build-rspec-command-options ()
-  (let ((options " -f n "))
-    (if run-rspec-block (concat options " -l " (number-to-string (line-number-at-pos))) options)))
+  (if run-rspec-block (concat rspec-default-options " -l " (number-to-string (line-number-at-pos))) rspec-default-options))
 
 (setq run-rspec-block nil)
 
