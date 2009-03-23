@@ -11,9 +11,11 @@
 
 (setq run-rspec-block nil)
 
-(defun toggle-run-current-rspec-block ()
+(defun run-current-rspec-block ()
   (interactive)
-  (setq run-rspec-block (not run-rspec-block)))
+  (setq run-rspec-block t)
+  (run-test)
+  (setq run-rspec-block nil))
 
 (defun test-case-rspec-make-run-command (buffer)
   (fset 'builder-for-rspec-runner-command 'build-rspec-runner-command-for)
