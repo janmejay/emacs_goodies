@@ -19,9 +19,7 @@
 
 (defun test-case-rspec-make-run-command (buffer)
   (fset 'builder-for-rspec-runner-command 'build-rspec-runner-command-for)
-  (let ((file-name (buffer-file-name (current-buffer))))
-    (load-emacs-project-file-for file-name)
-    (builder-for-rspec-runner-command file-name)))
+  (builder-for-rspec-runner-command (buffer-file-name (current-buffer))))
 
 (defun test-case-is-rspec (buffer)
   "Determine if this buffer is a rspec test case."

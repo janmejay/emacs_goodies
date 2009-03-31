@@ -371,6 +371,7 @@ and a result value that is either 'unrunnable, 'failure or 'success.")
 (defun run-test (&optional dont-abort)
   "Run a test contained in a buffer."
   (interactive)
+  (load-emacs-project-file-for (buffer-file-name (current-buffer)))
   (assert (not (eq 'unknown test-case-type)))
   (if (and test-case-process
            dont-abort)
