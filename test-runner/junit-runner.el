@@ -71,9 +71,9 @@
 (defun test-case-is-junit (buffer)
   "Determine if this buffer is a JUnit test case."
   (and (string-match "\.java$" (buffer-file-name buffer))
-       (grep-buffer buffer (concat "import\s+junit\s*\\.framework\s*\\."
-                                   "\s*\\(TestCase\\|\\*\\)"))
-       (grep-buffer buffer "extends\s+TestCase")))
+       (or (grep-buffer buffer "import\s+junit\s*\\.framework\s*\\.")
+           (grep-buffer buffer "import\s+org\.junit"))
+       (or (grep-buffer buffer "extends\s+TestCase") (grep-buffer buffer "@Test")) ))
 
 ;; (grep-buffer-list "junit\\.framework\\.AssertionFailedError: \\(.+\\)"
 ;;                   (get-buffer "*Test run Test.java*"))
