@@ -16,7 +16,7 @@
 (defun test-case-is-unittest (buffer)
   "Determine if this buffer is a rspec test case."
   (let ((file_name (buffer-file-name buffer)))
-    (or (string-match "\_test.py$" file_name))))
+    (string-match "\_test[s]?.py$" file_name)))
 
 (test-case-register-type "import unittest" 'test-case-is-unittest
                          'test-case-unittest-make-run-command)
