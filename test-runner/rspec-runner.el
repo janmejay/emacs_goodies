@@ -17,9 +17,15 @@
   (run-test)
   (setq run-rspec-block nil))
 
+(defun file-path-and-exec-dir (file-name)
+  (let* ((project-root (emacs-proj-root))
+         (abs-filename (file-truename file-name)))
+    (concat "(cd " project-root " && " (build-rspec-runner-command-for abs-filename) ")")))
+
 (defun test-case-rspec-make-run-command (buffer)
   (fset 'builder-for-rspec-runner-command 'build-rspec-runner-command-for)
-  (builder-for-rspec-runner-command (buffer-file-name (current-buffer))))
+  (file-path-and-exec-dir (buffer-file-name (current-buffer))))
+
 
 (defun test-case-is-rspec (buffer)
   "Determine if this buffer is a rspec test case."
